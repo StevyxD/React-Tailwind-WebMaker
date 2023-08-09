@@ -24,6 +24,12 @@ const CreateWeb = () => {
     console.log(memberData);
     console.log(data);
   }
+  function onDelete(id) {
+    const newMemberData = memberData.filter((data) => {
+      return data.id !== id;
+    });
+    setMemberData(newMemberData);
+  }
 
   return (
     <div className="text-white">
@@ -41,8 +47,8 @@ const CreateWeb = () => {
         <div>
           {form && <Form stopWebsite={stopWebsite} formData={dataSetter} />}
         </div>
-        <div className="mt-[100px] border w-[700px] lg:w-[1092px] border-gray-700 shadow-xl hover:border-gray-300 duration-[900ms]  ">
-          {!form && <ProjectData projects={memberData} />}
+        <div className="mt-[100px] border w-[800px] lg:w-full border-gray-700 shadow-xl hover:border-gray-300 duration-[900ms]  ">
+          {!form && <ProjectData projects={memberData} onDelete={onDelete} />}
         </div>
       </div>
     </div>
